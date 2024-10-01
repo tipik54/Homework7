@@ -1,38 +1,29 @@
 package ru.kaznu.ruslan.lesson8;
 
 public class HW3 {
-
-    final static int SIZE = 5;
-
     public static void main(String[] args) {
-        //Реализовать метод, принимающий в качестве аргумента
-        // двумерный целочисленный массив, и зануляющий его диагональные
-        // элементы (можете выбрать любую из диагоналей, или занулить обе);
-        char[][] array = new char[SIZE][SIZE];
+        // Реализовать метод findMax(int[][] array) который должен найти и вернуть максимальный элемент массива;
+        int[][] array = {{1, 2, 3}, {9, 5, 6}, {7, 8, 4}};
 
-        setZeroDiagonal(array);
+        int maxElement = findMax(array);
+        System.out.println("Наибольший элемент массива: " + maxElement);
     }
 
-    public static void setZeroDiagonal(char[][] array) {
-        // Заполнение массива * и его отрисовка
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                array[i][j] = '*';
-                System.out.print(array[i][j]);
-            }
-            System.out.println();
-        }
-        // Цикл зануления диагоналей
-        for (int i = 0; i < SIZE; i++) {
+    public static int findMax(int[][] array) {
+        // Задаем начальное значение максимума для сравнения элементов массива с ним
+        int max = array[0][0];
 
-            array[i][i] = 0; //Зануление первой диагонали
-            array[i][SIZE - 1 - i] = 0; // зануление второй диагонали
-
-            for (int j = 0; j < SIZE; j++) {
-                System.out.print(array[i][j] + " ");
+        // При помощи цикла сравниваем каждый элемент массива и обновляем данные переменной int max
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] > max) {
+                    max = array[i][j];
+                }
             }
-            System.out.println();
         }
+
+        return max; //возвращаем переменную max
     }
 }
+
 
